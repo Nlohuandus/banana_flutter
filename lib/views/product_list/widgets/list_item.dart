@@ -1,14 +1,24 @@
+import 'package:banana_flutter/data/models/products_response.dart';
+import 'package:banana_flutter/views/product_detail/product_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
     super.key,
+    required this.product,
   });
 
+  final Products product;
+  static final currencyFormat = NumberFormat("#,##0.00", "es_AR");
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => print("object"),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ProductDetail(),
+        ),
+      ),
       child: Card(
         elevation: 5,
         child: Padding(
@@ -20,24 +30,27 @@ class ListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
-                    children: const [
-                      Text("IPHONE 9"),
-                      Text("Apple"),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("${product.title}"),
+                      Text("${product.brand}"),
                     ],
                   ),
-                  const Text("USD549.00"),
+                  Text("\$ ${currencyFormat.format(product.price)}"),
                 ],
               ),
               const SizedBox(
                 height: 32,
               ),
-              const Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+              Text(
+                "${product.description}",
               ),
               const SizedBox(
                 height: 32,
               ),
-              const Text("Stock Numero")
+              Text(
+                "${product.stock}",
+              ),
             ],
           ),
         ),

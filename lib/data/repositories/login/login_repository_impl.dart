@@ -1,7 +1,7 @@
 import 'package:banana_flutter/core/dio/dio_client.dart';
 import 'package:banana_flutter/data/models/login_request.dart';
 import 'package:banana_flutter/data/models/user_data.dart';
-import 'package:banana_flutter/data/repositories/login_repository.dart';
+import 'package:banana_flutter/data/repositories/login/login_repository.dart';
 import 'package:dio/dio.dart';
 
 class LoginRepositoryImpl extends LoginRepository {

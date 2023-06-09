@@ -82,6 +82,11 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              ElevatedButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed("product_list"),
+                child: const Text("data"),
+              ),
               const Text(
                 "Bienvenidos",
                 style: TextStyle(fontSize: 32),
