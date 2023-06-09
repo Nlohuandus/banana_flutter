@@ -1,12 +1,29 @@
+import 'package:banana_flutter/data/models/login_request.dart';
+import 'package:banana_flutter/data/models/user_data.dart';
+import 'package:banana_flutter/data/repositories/login_repository_impl.dart';
 import 'package:flutter/material.dart';
 
 class SessionProvider extends ChangeNotifier {
-  String _name = 'undefined michi 😼';
+  UserData? _user;
 
-  String get name => _name;
+  UserData? get user => _user;
 
-  set name(String newName) {
-    _name = newName;
+  void setUser(UserData newUser) {
+    _user = newUser;
     notifyListeners();
+  }
+
+  auth({
+    required String user,
+    required String password,
+  }) async {
+    setUser(
+      await LoginRepositoryImpl().auth(
+        LoginRequest(
+          password: password,
+          username: user,
+        ),
+      ),
+    );
   }
 }

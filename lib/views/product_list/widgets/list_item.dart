@@ -32,7 +32,8 @@ class ListItem extends StatelessWidget {
                 height: 32,
               ),
               const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"),
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+              ),
               const SizedBox(
                 height: 32,
               ),

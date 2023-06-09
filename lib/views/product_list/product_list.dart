@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:banana_flutter/data/provider/session_provider.dart';
 import 'package:banana_flutter/views/product_list/widgets/list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({super.key});
@@ -11,6 +15,8 @@ class ProductList extends StatefulWidget {
 class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
+    log(Provider.of<SessionProvider>(context).user?.toJson().toString() ??
+        "null");
     return Scaffold(
       appBar: AppBar(
         title: const Text("Flutter challenge 2023"),
@@ -22,11 +28,12 @@ class _ProductListState extends State<ProductList> {
         child: Column(
           children: [
             TextFormField(
-                decoration: const InputDecoration(
-              hintText: "Buscar producto",
-              suffixIcon: Icon(Icons.search),
-              border: UnderlineInputBorder(),
-            )),
+              decoration: const InputDecoration(
+                hintText: "Buscar producto",
+                suffixIcon: Icon(Icons.search),
+                border: UnderlineInputBorder(),
+              ),
+            ),
             const SizedBox(
               height: 16,
             ),

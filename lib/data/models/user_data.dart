@@ -8,15 +8,16 @@ class UserData {
   String? image;
   String? token;
 
-  UserData(
-      {this.id,
-      this.username,
-      this.email,
-      this.firstName,
-      this.lastName,
-      this.gender,
-      this.image,
-      this.token});
+  UserData({
+    this.id,
+    this.username,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.gender,
+    this.image,
+    this.token,
+  });
 
   UserData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

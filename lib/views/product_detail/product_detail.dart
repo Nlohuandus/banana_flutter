@@ -10,12 +10,14 @@ class ProductDetail extends StatelessWidget {
       body: Column(
         children: [
           const Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"),
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+          ),
           const Text("precio"),
           const Spacer(),
           ElevatedButton(
-              onPressed: () => print("agregar al carrito"),
-              child: const Text("agregar al carrito"))
+            onPressed: () => print("agregar al carrito"),
+            child: const Text("agregar al carrito"),
+          )
         ],
       ),
     );
