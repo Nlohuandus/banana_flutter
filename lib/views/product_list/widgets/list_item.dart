@@ -12,7 +12,10 @@ class ListItem extends StatelessWidget {
   });
 
   final Products product;
-  static final currencyFormat = NumberFormat("#,##0.00", "es_AR");
+  static final currencyFormat = NumberFormat.simpleCurrency(
+    locale: "en_US",
+    decimalDigits: 2,
+  );
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -54,7 +57,7 @@ class ListItem extends StatelessWidget {
                 height: 32,
               ),
               Text(
-                "${product.stock}",
+                "Cant. ${product.stock}",
               ),
             ],
           ),
