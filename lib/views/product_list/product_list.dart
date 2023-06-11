@@ -14,6 +14,8 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
+  TextEditingController searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -42,12 +44,20 @@ class _ProductListState extends State<ProductList> {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
         child: Column(
           children: [
-            TextFormField(
+            TextField(
+              controller: searchController,
               decoration: const InputDecoration(
                 hintText: "Buscar producto",
                 suffixIcon: Icon(Icons.search),
                 border: UnderlineInputBorder(),
               ),
+              textInputAction: TextInputAction.done,
+              onSubmitted: (value) async {
+                await context
+                    .read<ProductsProvider>()
+                    .searchProductList(value.toLowerCase());
+                if (!mounted) return;
+              },
             ),
             const SizedBox(
               height: 16,
@@ -64,7 +74,13 @@ class _ProductListState extends State<ProductList> {
                     const SizedBox(height: 16),
                 itemCount: productsList.products?.length ?? 0,
               )
-            ]
+            ] else
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "No se encontraron resultados ${searchController.text.isNotEmpty ? 'para ${searchController.text}' : ''}",
+                ),
+              )
           ],
         ),
       ),

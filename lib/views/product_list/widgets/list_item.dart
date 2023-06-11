@@ -1,7 +1,9 @@
 import 'package:banana_flutter/data/models/products_response.dart';
+import 'package:banana_flutter/data/provider/products_provider.dart';
 import 'package:banana_flutter/views/product_detail/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
@@ -14,11 +16,14 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ProductDetail(),
-        ),
-      ),
+      onTap: () async {
+        await context.read<ProductsProvider>().getSingleProduct(product.id!);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const ProductDetail(),
+          ),
+        );
+      },
       child: Card(
         elevation: 5,
         child: Padding(
@@ -36,7 +41,7 @@ class ListItem extends StatelessWidget {
                       Text("${product.brand}"),
                     ],
                   ),
-                  Text("\$ ${currencyFormat.format(product.price)}"),
+                  Text("USD ${currencyFormat.format(product.price)}"),
                 ],
               ),
               const SizedBox(
